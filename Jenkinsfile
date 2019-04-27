@@ -39,8 +39,6 @@ pipeline {
                 branch 'master'
             }
             steps {
-                input 'Deploy to Production?'
-                milestone(1)
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     script {
                         sh "sshpass -p '$USERPASS'  ssh -o StrictHostKeyChecking=no $USERNAME@$prod_ip \"docker pull helion1/train-schedule:${env.BUILD_NUMBER}\""
