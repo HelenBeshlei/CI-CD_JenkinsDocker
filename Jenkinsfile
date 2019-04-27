@@ -16,7 +16,7 @@ pipeline {
                 script {
                     app = docker.build("helion1/train-schedule")
                     app.inside {
-                        sh 'echo $(curl 192.168.10.11:8080)'
+                        sh 'echo $(curl 192.168.10.12:8080)'
                     }
                 }
             }
